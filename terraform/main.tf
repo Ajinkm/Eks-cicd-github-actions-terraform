@@ -43,30 +43,21 @@ module "vpc" {
 ############################
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "20.0.0"
+  version = "19.0.0"
 
   cluster_name    = "eks-cluster"
-  cluster_version = "1.29"
+  cluster_version = "1.27"
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
-  enable_irsa = true
-
-  cluster_endpoint_public_access = true
-
   eks_managed_node_groups = {
     default = {
       instance_types = ["t3.medium"]
-
-      min_size     = 1
-      max_size     = 3
-      desired_size = 2
-
-      capacity_type = "ON_DEMAND"
+      desired_size   = 2
     }
   }
-
+}
   tags = {
     Environment = "dev"
     Project     = "eks-cicd"
