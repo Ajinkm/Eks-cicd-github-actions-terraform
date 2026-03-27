@@ -42,7 +42,7 @@ module "vpc" {
 }
 
 #################################
-# EKS MODULE (COMPATIBLE VERSION)
+# EKS MODULE
 #################################
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
