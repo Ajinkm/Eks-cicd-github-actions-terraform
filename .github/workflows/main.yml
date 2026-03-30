@@ -29,5 +29,18 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Apply
+        id: apply
         run: terraform apply -auto-approve
         working-directory: terraform
+        continue-on-error: true   # 👈 important
+
+      # 👇 If apply fails → destroy everything
+      - name: Terraform Destroy on Failure
+        if: steps.apply.outcome == 'failure'
+        run: terraform destroy -auto-approve
+        working-directory: terraform
+
+      # 👇 Optional: fail the job finally
+      - name: Fail Workflow if Apply Failed
+        if: steps.apply.outcome == 'failure'
+        run: exit 1
