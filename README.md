@@ -190,7 +190,6 @@ scripts/generate-dockerfile.sh
 
 * Kubernetes YAML is updated dynamically
 * Image tag is injected automatically
-* No manual edits required
 
 ---
 
