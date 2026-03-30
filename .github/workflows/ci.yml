@@ -24,7 +24,7 @@ jobs:
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Image
-        run: docker build -t ghcr.io/${{ github.repository }}:$TAG .
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/eks-cicd-github-actions-terraform:$TAG .
 
       - name: Push Image
-        run: docker push ghcr.io/${{ github.repository }}:$TAG
+        run:  docker push ghcr.io/${{ github.repository_owner }}/eks-cicd-github-actions-terraform:$TAG

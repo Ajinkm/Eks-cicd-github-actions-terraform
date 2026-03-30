@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set Image
-        run: echo "IMAGE=ghcr.io/${{ github.repository }}:${{ github.sha }}" >> $GITHUB_ENV
+        run: echo "IMAGE=ghcr.io/ajinkm/eks-cicd-github-actions-terraform:${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Update Manifest
         run: bash scripts/update-manifest.sh $IMAGE
