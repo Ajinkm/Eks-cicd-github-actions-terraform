@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "eks-terraform-state-bucket"   # 🔁 change if needed
+    bucket         = "eks-terraform-state-bucket-ajin"   # 🔁 change if needed
     key            = "eks/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "eks-terraform-lock"
