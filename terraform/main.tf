@@ -7,6 +7,14 @@ terraform {
       version = "5.30.0"
     }
   }
+
+  backend "s3" {
+    bucket         = "eks-terraform-state-bucket"   # 🔁 change if needed
+    key            = "eks/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "eks-terraform-lock"
+    encrypt        = true
+  }
 }
 #################################
 # AWS Provider
